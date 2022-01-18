@@ -1,46 +1,48 @@
-class UserController{
-    async registration(req,res,next){
+class UserController {
+
+    async registration(req, res, next) {
         try {
-            
+
         } catch (error) {
-            
+
         }
     }
-    async login(req,res,next){
+    async login(req, res, next) {
         try {
-            
+
         } catch (error) {
-            
+
         }
     }
-    async logout(req,res,next){
+    async logout(req, res, next) {
         try {
-            
+
         } catch (error) {
-            
+
         }
     }
-    async activate(req,res,next){
+    async activate(req, res, next) {
         try {
-            
+
         } catch (error) {
-            
+
         }
     }
-    async refresh(req,res,next){
+    async refresh(req, res, next) {
         try {
-            
+
         } catch (error) {
-            
+
         }
     }
-    async getUsres(req,res,next){
+    async getUsres(req, res, next) {
+        console.log("test");
         try {
-            res.json(['123','44'])
-            
+            res.json(['123', '44']);
+
         } catch (error) {
-            
+
         }
     }
 }
-module.exports = new UserController()
+module.exports = new UserController();
