@@ -1,4 +1,5 @@
-import { UserModel } from "../models/user-models";
+import UserModel from "../models/user-models";
+
 import MailService from "./mail-service";
 import bcrypt from "bcrypt";
 import TokenService from "./token-service";
