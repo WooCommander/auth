@@ -1,8 +1,17 @@
-class UserController {
+const UserService = require("../service/user-service.ts");
 
+
+class UserController {
+    userService
+constructor(){
+    // const UserService = require("../service/user-service");
+    this.userService= new UserService()
+}
     async registration(req, res, next) {
         try {
-
+            const { email, password } = req.body;
+            const userData = await this.userService.registration(email, password);
+      
         } catch (error) {
 
         }
