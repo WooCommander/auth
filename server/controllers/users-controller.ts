@@ -6,33 +6,33 @@ class UserController {
     // const UserService = require("../service/user-service");
     this.userService = new UserService();
   }
-  async registration(req, res, next) {
+  async registration(req: any, res: any, next: any) {
     try {
       const { email, password } = req.body;
       const userData = await this.userService.registration(email, password);
     } catch (error) {}
   }
-  async login(req, res, next) {
+  async login(req: any, res: any, next: any) {
     try {
     } catch (error) {}
   }
-  async logout(req, res, next) {
+  async logout(req: any, res: any, next: any) {
     try {
     } catch (error) {}
   }
-  async activate(req, res, next) {
+  async activate(req: any, res: any, next: any) {
     try {
     } catch (error) {}
   }
-  async refresh(req, res, next) {
+  async refresh(req: any, res: any, next: any) {
     try {
     } catch (error) {}
   }
-  async getUsres(req, res, next) {
+  async getUsres(req: any, res: any, next: any) {
     console.log("test");
     try {
       res.json(["123", "44"]);
     } catch (error) {}
   }
 }
-module.exports = new UserController();
+export default new UserController();
