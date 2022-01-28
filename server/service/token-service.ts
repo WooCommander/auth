@@ -1,8 +1,8 @@
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 
-import tokenModel from "../models/token-models";
+import TokenSchema from "../models/token-models";
 export default class TokenService {
-  generateTokens(payload): { accessToken: string; refreshToken: string } {
+  generateTokens(payload: any): { accessToken: string; refreshToken: string } {
     const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, "30m");
     const refreshToken = jwt.sign(
       payload,
@@ -15,12 +15,12 @@ export default class TokenService {
     };
   }
   async saveToken(userId: any, refreshToken: any) {
-    const tokenData = await tokenModel.findOne({ user: userId });
+    const tokenData = await TokenSchema.findOne({ user: userId });
     if (tokenData) {
       tokenData.refreshToken = refreshToken;
       return tokenData.save();
     }
-    const token = await tokenModel.create({ user: userId, refreshToken });
+    const token = await TokenSchema.create({ user: userId, refreshToken });
     return token;
   }
 }

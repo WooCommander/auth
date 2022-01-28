@@ -1,5 +1,7 @@
+// const UserController = require('../controllers/users-controller');
+import UserController from '../controllers/users-controller';
+
 const express = require('express');
-const UserController = require('../controllers/users-controller');
 
 const router = express.Router();
 
@@ -10,4 +12,4 @@ router.get('/activate/:link', UserController.activate);
 router.post('/refresh', UserController.refresh);
 router.get('/users', UserController.getUsres);
 // console.log("router", router);
-module.exports = router;
+exports = router;
