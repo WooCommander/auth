@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import TokenService from "./token-service";
 import UserDto from "../dtos/user-dtos";
 
-export default class UserService {
+class UserService {
   mailService: MailService;
   tokenService: TokenService;
   constructor() {
@@ -31,3 +31,4 @@ export default class UserService {
     return { ...tokens, user: userDto };
   }
 }
+export default new UserService();
