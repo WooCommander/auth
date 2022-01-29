@@ -1,4 +1,5 @@
-const UserService = require("../service/user-service.ts");
+// const UserService = require("../service/user-service.ts");
+import UserService from "../service/user-service";
 
 class UserController {
   constructor() {
@@ -27,7 +28,7 @@ class UserController {
     try {
     } catch (error) {}
   }
-  async getUsres(req: any, res: any, next: any) {
+  async getUsers(req: any, res: any, next: any) {
     console.log("test");
     try {
       res.json(["123", "44"]);

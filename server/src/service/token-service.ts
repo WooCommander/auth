@@ -3,12 +3,13 @@ const jwt = require("jsonwebtoken");
 import TokenSchema from "../models/token-models";
 export default class TokenService {
   generateTokens(payload: any): { accessToken: string; refreshToken: string } {
-    const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, "30m");
-    const refreshToken = jwt.sign(
-      payload,
-      process.env.JWT_REFRESH_ACCESS_SECRET,
-      "30d"
-    );
+    const accessToken = jwt.sign(payload, "jwt-secret-key", {
+      expiresIn: "30m",
+    });
+
+    const refreshToken = jwt.sign(payload, "jwt-refresh-secret-key", {
+      expiresIn: "30d",
+    });
     return {
       accessToken,
       refreshToken,
