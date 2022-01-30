@@ -4,6 +4,8 @@ import nodemailer from "nodemailer";
 export default class MailService {
   transporter;
   constructor() {
+    console.log(process.env);
+
     this.transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: process.env.SMTP_PORT,
