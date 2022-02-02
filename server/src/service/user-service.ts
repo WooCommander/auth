@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import TokenService from "./token-service";
 
 import UserDto from "../dtos/user-dtos";
+// import UserModel from "../models/user-model";
 
 class UserService {
   mailService: MailService;
@@ -33,5 +34,16 @@ class UserService {
     await this.tokenService.saveToken(userDto.id, token.refreshToken);
     return { ...token, user: userDto };
   }
+  async activate(activateLink: string) {
+    const UserModel = require("../models/user-model");
+    const user = await UserModel.findOne({ activateLink })
+    if (!user) {
+      throw new Error('Некорректная ссылка активации')
+    }
+    user.isActivated = true;
+    await user.save();
+
+  }
 }
+
 export default new UserService();
