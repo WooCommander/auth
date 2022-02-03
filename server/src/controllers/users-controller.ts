@@ -15,16 +15,16 @@ class UserController {
       res.cookie("refreshToken", userData.accessToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
       return res.json(userData);
     } catch (error) {
-      console.log(error);
+      next(error);
     }
   }
   async login(req: any, res: any, next: any) {
     try {
-    } catch (error) { }
+    } catch (error) { next(error); }
   }
   async logout(req: any, res: any, next: any) {
     try {
-    } catch (error) { }
+    } catch (error) { next(error); }
   }
   async activate(req: any, res: any, next: any) {
     try {
@@ -35,13 +35,13 @@ class UserController {
   }
   async refresh(req: any, res: any, next: any) {
     try {
-    } catch (error) { }
+    } catch (error) { next(error); }
   }
   async getUsers(req: any, res: any, next: any) {
     console.log("test");
     try {
       res.json(["123", "44"]);
-    } catch (error) { }
+    } catch (error) { next(error); }
   }
 }
 export default new UserController();

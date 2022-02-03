@@ -2,6 +2,7 @@ import MailService from "./mail-service";
 import bcrypt from "bcrypt";
 import TokenService from "./token-service";
 
+const ApiError = require('../exceptions/api-error');
 import UserDto from "../dtos/user-dtos";
 // import UserModel from "../models/user-model";
 
@@ -18,8 +19,7 @@ class UserService {
     candidate = await UserModel.findOne({ email });
     const uuid = require("uuid");
     if (candidate) {
-      throw new Error(
-        `Пользователь с почтовым адресом ${email} уже существует`
+      throw ApiError.BadRequest(`Пользователь с почтовым адресом ${email} уже существует`
       );
     }
     const hashPassword = await bcrypt.hash(password, 3);
@@ -38,7 +38,7 @@ class UserService {
     const UserModel = require("../models/user-model");
     const user = await UserModel.findOne({ activateLink })
     if (!user) {
-      throw new Error('Некорректная ссылка активации')
+      throw ApiError.BadRequest('Некорректная ссылка активации')
     }
     user.isActivated = true;
     await user.save();
