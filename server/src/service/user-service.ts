@@ -44,6 +44,21 @@ class UserService {
     await user.save();
 
   }
+  async login(email: string, password: string) {
+    const UserModel = require("../models/user-model");
+    const user = await UserModel.findeOne({ email })
+    if (!user) {
+      throw ApiError.BadRequest('Пользователь с таким email не найден')
+    }
+    const isPassEquals = await bcrypt.compare(password, user.password)
+    if (!isPassEquals) {
+      throw ApiError.BadRequest('Неверный пароль')
+    }
+    const userDto = new UserDto(user);
+    const token = this.tokenService.generateTokens({ ...userDto })
+    await this.tokenService.saveToken(userDto.id, token.refreshToken);
+    return { ...token, user: userDto };
+  }
 }
 
 export default new UserService();
