@@ -3,10 +3,11 @@ import userController from "../controllers/users-controller";
 import { body } from "express-validator";
 
 
-import authMiddleware from "../middlewares/auth-middleware";
+
 
 const authRouter = Router();
-// const authMiddleware = require("../middleware/auth-middleware")
+// const authMiddleware = require("../middleware/auth-middleware.js");
+const authMiddleware = require("../middleware/auth-middleware")
 authRouter.post(
   "/registration",
   body("email").isEmail(),
