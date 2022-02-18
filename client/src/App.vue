@@ -12,6 +12,10 @@ import layout from "./layout/layout.vue";
 })
 export default class App extends Vue {}
 </script>
+
+<style>
+@import "./assets/styles/bootstrap/bootstrap.mini.css";
+</style>
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -20,5 +24,6 @@ export default class App extends Vue {}
   text-align: center;
   color: #2c3e50;
   height: 100%;
+  font-size: 12px;
 }
 </style>

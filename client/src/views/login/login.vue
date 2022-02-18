@@ -1,8 +1,25 @@
 <template>
   <div class="login">
-    <bs-row
-      ><bs-col>Login<tirscript3-input /></bs-col
-    ></bs-row>
+    <div class="wrap">
+      <div class="login__form">
+        <bs-row>
+          <bs-col>Login</bs-col>
+          <bs-col><tirscript3-input /></bs-col>
+        </bs-row>
+        <bs-row>
+          <bs-col>Password</bs-col>
+          <bs-col><tirscript3-input type="password" /></bs-col>
+        </bs-row>
+        <bs-row>
+          <bs-col>
+            <tirscript3-button active>Login</tirscript3-button>
+          </bs-col>
+          <bs-col>
+            <tirscript3-button>Cancel</tirscript3-button>
+          </bs-col>
+        </bs-row>
+      </div>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -58,5 +75,31 @@ export default class LoginPageComponent extends Vue {
   }
 }
 </script>
-<style scoped >
+<style lang="less">
+.login {
+  display: flex;
+  height: 100vh;
+  .wrap {
+    margin: auto;
+    .login__form {
+      // background: #ccc;
+      min-width: 400px;
+      -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+      -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+      box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      padding: 25px;
+    }
+  }
+}
+
+.tirscript-input {
+  .form-control {
+    padding: 0.2em;
+    background: #fff;
+  }
+  input.form-control {
+  }
+}
 </style>
