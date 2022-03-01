@@ -2,9 +2,13 @@
   <div class="login">
     <div class="wrap">
       <div class="login__form">
+        <h2>Login</h2>
         <bs-row>
-          <bs-col>Login</bs-col>
-          <bs-col><tirscript3-input /></bs-col>
+          <!-- <bs-col>User name</bs-col>
+          <bs-col><tirscript3-input /></bs-col> -->
+          <bs-col>
+            <ui-input-box></ui-input-box>
+          </bs-col>
         </bs-row>
         <bs-row>
           <bs-col>Password</bs-col>
@@ -24,9 +28,11 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from "vue-property-decorator";
+import UiInputBox from "../components/ui-input-box.vue";
 // import { FORGOTPESSWORD, ENTERPRISES } from "@/router/routerNames";
 @Options({
   emits: ["goToAdmin"],
+  components: { UiInputBox },
 })
 export default class LoginPageComponent extends Vue {
   username = "";
@@ -79,6 +85,8 @@ export default class LoginPageComponent extends Vue {
 .login {
   display: flex;
   height: 100vh;
+  background: url("../../assets/img/bg.jpg");
+  background-size: cover;
   .wrap {
     margin: auto;
     .login__form {
@@ -87,9 +95,16 @@ export default class LoginPageComponent extends Vue {
       -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
       -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
       box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-      border-radius: 4px;
+      background: rgba(34, 60, 80, 0.8);
+      border-radius: 10px;
       border: 1px solid #ccc;
-      padding: 25px;
+      padding: 40px;
+      color: #fff;
+      box-sizing: border-box;
+      &h2 {
+        padding: 0;
+        margin: 0 0 30px;
+      }
     }
   }
 }
