@@ -12,7 +12,7 @@ import Tirscript3DropdownMenuSub from "tirscript3-dropdown-menu/src/tirscript3-d
 // import Tirscript3CropImage from "tirscript3-crop-image/src/tirscript3-crop-image.vue";
 import Tirscript3Loading from "tirscript3-loading/src/tirscript3-loading.vue";
 import Tirscript3Input from "tirscript3-input/src/tirscript3-input.vue";
-import Tirscript3Textarea from "tirscript3-textarea/src/tirscript3-textarea.vue";
+import Tirscript3Textarea from "tirscript3-textarea/src/tirscript-textarea.vue";
 import Tirscript3Button from "tirscript3-button/src/tirscript3-button.vue";
 import Tirscript3DatePicker from "tirscript3-date-picker/src/tirscript3-date-picker.vue";
 // import Tirscript3Checkbox from "tirscript3-checkbox/src/tirscript3-checkbox.vue";

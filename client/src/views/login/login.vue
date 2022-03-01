@@ -6,13 +6,16 @@
         <bs-row>
           <!-- <bs-col>User name</bs-col>
           <bs-col><tirscript3-input /></bs-col> -->
-          <bs-col>
-            <ui-input-box></ui-input-box>
-          </bs-col>
+          <!-- <bs-col> -->
+          <ui-input-box v-model="login"></ui-input-box>
+          <!-- </bs-col> -->
         </bs-row>
         <bs-row>
-          <bs-col>Password</bs-col>
-          <bs-col><tirscript3-input type="password" /></bs-col>
+          <!-- <bs-col>Password</bs-col> -->
+          <!-- <bs-col> -->
+          <!-- <tirscript3-input type="password" /> -->
+          <ui-input-box v-model="password"></ui-input-box>
+          <!-- </bs-col> -->
         </bs-row>
         <bs-row>
           <bs-col>
@@ -28,6 +31,7 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from "vue-property-decorator";
+import InputBoxModel from "../components/inputBoxModel";
 import UiInputBox from "../components/ui-input-box.vue";
 // import { FORGOTPESSWORD, ENTERPRISES } from "@/router/routerNames";
 @Options({
@@ -36,11 +40,27 @@ import UiInputBox from "../components/ui-input-box.vue";
 })
 export default class LoginPageComponent extends Vue {
   username = "";
-  password = "";
+  // password = "";
   errorMessage: string = "";
   wrong: boolean = false;
   isshowEye = false;
+  login: InputBoxModel;
+  password: InputBoxModel;
 
+  created() {
+    this.login = new InputBoxModel({
+      Name: "User name",
+      Value: "",
+      Type: "text",
+      Requared: true,
+    });
+    this.password = new InputBoxModel({
+      Name: "Password",
+      Value: "",
+      Type: "password",
+      Requared: true,
+    });
+  }
   async enterPage() {
     //найти регулярное выражение для телефона, почитать про директивы
     // if (this.username.length == 0 || this.password.length == 0) {
@@ -101,7 +121,7 @@ export default class LoginPageComponent extends Vue {
       padding: 40px;
       color: #fff;
       box-sizing: border-box;
-      &h2 {
+      h2 {
         padding: 0;
         margin: 0 0 30px;
       }

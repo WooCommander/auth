@@ -1,23 +1,18 @@
 <template>
   <div class="ui-input-box">
-    <input type="text" name="" required="" />
-    <label>{{ value.Name }}</label>
+    <input :type="modelValue.Type" name="" required="" />
+    <label>{{ modelValue.Name }}</label>
   </div>
 </template>
 <script lang="ts">
-class InputModel {
-  Name: string;
-  Value: string;
-  Type: string = "text";
-  Requared: boolean;
-}
 import { Vue, Prop, Options } from "vue-property-decorator";
+import InputBoxModel from "./inputBoxModel";
 @Options({
   name: "InputBox",
   emits: [],
 })
 export default class InputBox extends Vue {
-  @Prop({ default: () => new InputModel() }) value: InputModel;
+  @Prop({}) modelValue: InputBoxModel;
 
   created() {}
   mounted() {}
@@ -25,5 +20,16 @@ export default class InputBox extends Vue {
 </script>
 <style lang="scss">
 .ui-input-box {
+  position: relative;
+  width: 100%;
+  margin: 0 0 15px;
+  input {
+    width: 100%;
+    padding: 0.5em;
+  }
+  label {
+    position: absolute;
+    left: 0;
+  }
 }
 </style>
