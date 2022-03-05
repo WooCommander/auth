@@ -2,7 +2,7 @@
   <div class="login">
     <div class="wrap">
       <div class="login__form">
-        <h2>Login</h2>
+        <h3>Login</h3>
         <bs-row>
           <!-- <bs-col>User name</bs-col>
           <bs-col><tirscript3-input /></bs-col> -->
@@ -17,13 +17,9 @@
           <ui-input-box v-model="password"></ui-input-box>
           <!-- </bs-col> -->
         </bs-row>
-        <bs-row>
-          <bs-col>
-            <tirscript3-button active>Login</tirscript3-button>
-          </bs-col>
-          <bs-col>
-            <tirscript3-button>Cancel</tirscript3-button>
-          </bs-col>
+        <bs-row class="login__btns">
+          <tirscript3-button active @click="onLogin">Login</tirscript3-button>
+          <tirscript3-button>Cancel</tirscript3-button>
         </bs-row>
       </div>
     </div>
@@ -33,9 +29,9 @@
 import { Options, Vue } from "vue-property-decorator";
 import InputBoxModel from "../components/inputBoxModel";
 import UiInputBox from "../components/ui-input-box.vue";
-// import { FORGOTPESSWORD, ENTERPRISES } from "@/router/routerNames";
+
 @Options({
-  emits: ["goToAdmin"],
+  emits: [""],
   components: { UiInputBox },
 })
 export default class LoginPageComponent extends Vue {
@@ -52,43 +48,19 @@ export default class LoginPageComponent extends Vue {
       Name: "User name",
       Value: "",
       Type: "text",
-      Requared: true,
+      Required: true,
     });
     this.password = new InputBoxModel({
       Name: "Password",
       Value: "",
       Type: "password",
-      Requared: true,
+      Required: true,
     });
   }
-  async enterPage() {
-    //найти регулярное выражение для телефона, почитать про директивы
-    // if (this.username.length == 0 || this.password.length == 0) {
-    //   this.errorMessage = "Пароль или телефон не введен";
-    //   this.wrong = true;
-    // }
-    // if (this.username.length > 0 && this.password.length > 0) {
-    //   let res = await this.$api.AuthService.login({
-    //     username: this.username,
-    //     password: this.password,
-    //   });
-    //   if (res.IsSuccess) {
-    //     this.$router.push({ name: ENTERPRISES });
-    //     this.$store.state.CurrentUser = this.username;
-    //     // console.log("res",res);
-    //   } else {
-    //     this.wrong = true;
-    //     this.errorMessage = res.StatusText;
-    //   }
-    // }
+  onLogin() {
+    console.log(this.password, this.login);
   }
 
-  forgot() {
-    // this.$router.push({ name: FORGOTPESSWORD });
-  }
-  goToAdmin() {
-    // this.$router.push({ name: this.Users });
-  }
   ShowPassword() {
     var x = document.getElementById("password") as HTMLInputElement;
     if (x.type === "password") {
@@ -117,7 +89,7 @@ export default class LoginPageComponent extends Vue {
       box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
       background: rgba(34, 60, 80, 0.8);
       border-radius: 10px;
-      border: 1px solid #ccc;
+      border: 1px solid rgb(77, 77, 77);
       padding: 40px;
       color: #fff;
       box-sizing: border-box;
@@ -125,7 +97,13 @@ export default class LoginPageComponent extends Vue {
         padding: 0;
         margin: 0 0 30px;
       }
+      .login__btns {
+        justify-content: space-evenly;
+      }
     }
+  }
+  .tirscript-button {
+    max-width: 100px;
   }
 }
 

@@ -30,6 +30,10 @@ export default class layout extends Vue {}
 html,
 body {
   height: 100%;
+
+  .tirscript-button {
+    border-radius: 5px;
+  }
 }
 .layout {
   display: flex;
