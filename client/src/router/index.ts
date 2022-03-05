@@ -52,6 +52,12 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "contacts" */ "../views/login/login.vue"),
   },
+  {
+    path: "/admin",
+    name: "adminDefault",
+    component: () =>
+      import(/* webpackChunkName: "contacts" */ "../views/admin/index.vue"),
+  },
 ];
 
 const router = createRouter({

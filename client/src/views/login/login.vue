@@ -2,7 +2,7 @@
   <div class="login">
     <div class="wrap">
       <div class="login__form">
-        <h3>Login</h3>
+        <h3 class="mb-">Вход</h3>
         <bs-row>
           <!-- <bs-col>User name</bs-col>
           <bs-col><tirscript3-input /></bs-col> -->
@@ -18,8 +18,8 @@
           <!-- </bs-col> -->
         </bs-row>
         <bs-row class="login__btns">
-          <tirscript3-button active @click="onLogin">Login</tirscript3-button>
-          <tirscript3-button>Cancel</tirscript3-button>
+          <tirscript3-button active @click="onLogin">Ок</tirscript3-button>
+          <tirscript3-button>Отмена</tirscript3-button>
         </bs-row>
       </div>
     </div>
@@ -45,20 +45,20 @@ export default class LoginPageComponent extends Vue {
 
   created() {
     this.login = new InputBoxModel({
-      Name: "User name",
+      Name: "Имя пользователя",
       Value: "",
       Type: "text",
       Required: true,
     });
     this.password = new InputBoxModel({
-      Name: "Password",
+      Name: "Пароль",
       Value: "",
       Type: "password",
       Required: true,
     });
   }
   onLogin() {
-    console.log(this.password, this.login);
+    this.$router.push({ name: "adminDefault" });
   }
 
   ShowPassword() {
